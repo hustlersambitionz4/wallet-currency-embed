@@ -1,0 +1,26 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: publish
+  cancel-in-progress: true
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npm install
+      - run: npm run build
+      - run: |
+          git config user.name "GitHub Actions"
+          git config user.email ""
+          git add docs/
+          git commit -m "Update published build" || echo "No changes to commit"
+          git push
