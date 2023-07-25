@@ -170,18 +170,26 @@ const toggleTableRows = () => {
 const prepareTable = async () => {
   const loadingTemplateEl = document.querySelector('#tableBodyLoading');
   const errorTemplateEl = document.querySelector('#tableBodyError');
+  const bitPayWalletDisplayName = 'BitPay';
 
   createLoadingTemplate();
 
   try {
     const { data } = await getSupportedWallets();
-    const supportedWallets = data.filter(
-      (supportedWallet) => 'displayName' in supportedWallet
+    const bitpayWallets = data.filter(
+      (wallet) => wallet.displayName === bitPayWalletDisplayName
     );
 
+    let supportedWallets = data.filter(
+      (supportedWallet) =>
+        'displayName' in supportedWallet &&
+        supportedWallet.displayName !== bitPayWalletDisplayName
+    );
     supportedWallets.sort((a, b) =>
       a.displayName.toLowerCase() > b.displayName.toLowerCase() ? 1 : -1
     );
+    supportedWallets = [...bitpayWallets, ...supportedWallets];
+
     loadingTemplateEl.remove();
     errorTemplateEl.remove();
 
