@@ -81,7 +81,7 @@ const createWalletCurrency = (currency) => {
   currencyWrapper.classList.add(...currencyWrapperClassLists);
   currencyCode.textContent = currency.code;
   currencyCode.classList.add(...currencyCodeClassLists);
-  currencyImage.src = currency.image;
+  currencyImage.src = currency.image.replace('_m', '');
   currencyImage.classList.add(...currencyImageClassLists);
   currencyWrapper.appendChild(currencyImage);
   currencyWrapper.appendChild(currencyCode);
