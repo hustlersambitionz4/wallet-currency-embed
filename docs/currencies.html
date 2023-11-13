@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <title>Bitpay Supported Wallets & Currencies</title>
+  </head>
+  <body>
+    <main class="container mx-auto py-10 max-w-4xl">
+      <div class="border rounded-lg shadow-sm">
+        <table class="min-w-full divide-y divide-gray-300">
+          <tbody
+            class="divide-y divide-gray-200 bg-white"
+            id="tableBody"
+          ></tbody>
+          <tbody
+            class="divide-y divide-gray-200 bg-white"
+            id="tableBodyLoading"
+          ></tbody>
+          <tbody
+            class="divide-y divide-gray-200 bg-white"
+            id="tableBodyError"
+          ></tbody>
+        </table>
+      </div>
+    </main>
+    <script src="main.js" type="module"></script>
+    <script src="currencies.js" type="module"></script>
+  </body>
+</html>
